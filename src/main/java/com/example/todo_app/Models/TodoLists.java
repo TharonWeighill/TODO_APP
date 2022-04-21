@@ -21,13 +21,4 @@ public class TodoLists {
     public void setListName(String listName) { this.listName = listName; }
     public String getlistBody() { return listBody; }
     public void setlistBody(String listBody) { this.listBody = listBody; }
-
-    @Override
-    public String toString() {
-        return "TodoLists{" +
-                "id=" + id +
-                ", listName='" + listName + '\'' +
-                ", listBody='" + listBody + '\'' +
-                '}';
-    }
 }
