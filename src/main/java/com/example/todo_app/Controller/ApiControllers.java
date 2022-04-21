@@ -34,4 +34,11 @@ public class ApiControllers {
         todoRepo.save(updateTodoList);
         return "Your List has been updated";
     }
+    @DeleteMapping(value = "/delete/{id}")
+        public String deleteTodoList(@PathVariable long id) {
+        TodoLists deleteTodoList = todoRepo.findById(id).get();
+        todoRepo.delete(deleteTodoList);
+        return "Your list has been deleted";
+    }
 }
+
