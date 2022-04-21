@@ -1,30 +1,33 @@
 package com.example.todo_app.Models;
+import org.w3c.dom.Text;
 
 import javax.persistence.*;
 
 @Entity
 public class TodoLists {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-
-    public String getListItem() {
-        return listItem;
-    }
-
-    public long getId() {
-        return id;
-    }
     @Column
-    private String listItem;
+    private String listName;
+    @Column
+    private String listBody;
 
-    public void setListItem(String listItem) {
-        this.listItem = listItem;
-    }
-
+    public long getId() { return id; }
     public void setId(long id) {
         this.id = id;
+    }
+    public String getListName() { return listName; }
+    public void setListName(String listName) { this.listName = listName; }
+    public String getlistBody() { return listBody; }
+    public void setlistBody(String listBody) { this.listBody = listBody; }
+
+    @Override
+    public String toString() {
+        return "TodoLists{" +
+                "id=" + id +
+                ", listName='" + listName + '\'' +
+                ", listBody='" + listBody + '\'' +
+                '}';
     }
 }
