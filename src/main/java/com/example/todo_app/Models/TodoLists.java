@@ -14,9 +14,7 @@ public class TodoLists {
     private String listBody;
 
     public long getId() { return id; }
-    public void setId(long id) {
-        this.id = id;
-    }
+    public void setId(long id) { this.id = id; }
     public String getListName() { return listName; }
     public void setListName(String listName) { this.listName = listName; }
     public String getlistBody() { return listBody; }

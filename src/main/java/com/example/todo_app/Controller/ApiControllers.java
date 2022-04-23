@@ -17,14 +17,18 @@ public class ApiControllers {
     public String getPage() {
         return "Welcome";
     }
+
+
+
     @GetMapping(value = "/lists")
     public List<TodoLists> getLists() {
         return todoRepo.findAll();
     }
+
     @PostMapping(value = "/save")
     public String saveList(@RequestBody TodoLists todoLists) {
         todoRepo.save(todoLists);
-    return "Todo list has been saved!";
+    return "Your list has been saved!";
     }
     @PutMapping(value ="update/{id}")
     public String updateTodoList(@PathVariable long id, @RequestBody TodoLists todoLists){
@@ -32,7 +36,7 @@ public class ApiControllers {
         updateTodoList.setListName(todoLists.getListName());
         updateTodoList.setlistBody(todoLists.getlistBody());
         todoRepo.save(updateTodoList);
-        return "Your List has been updated";
+        return "Your list has been updated";
     }
     @DeleteMapping(value = "/delete/{id}")
         public String deleteTodoList(@PathVariable long id) {
