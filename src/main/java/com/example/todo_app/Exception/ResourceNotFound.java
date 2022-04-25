@@ -13,9 +13,9 @@ public class ResourceNotFound extends RuntimeException{
     private String fieldName;
     private Object fieldValue;
 
-    public ResourceNotFound(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace, String resourceName) {
-        super(message, cause, enableSuppression, writableStackTrace);
-        this.resourceName = resourceName;
+    public ResourceNotFound(String message, Long resourceName) {
+        super(message);
+        this.resourceName = String.valueOf(resourceName);
     }
 
     public String getResourceName() {

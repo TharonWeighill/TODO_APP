@@ -15,6 +15,10 @@ public class TodoController {
         super();
         this.todoService = todoService;
     }
+    @GetMapping ("{id}")
+    public ResponseEntity<TodoLists> getTodoById(@PathVariable("id") long todoid) {
+        return new ResponseEntity<TodoLists>(todoService.getTodoById(todoid),HttpStatus.OK);
+    }
     @GetMapping
     public List<TodoLists> getAllTodos(){
      return todoService.getAllTodos();
