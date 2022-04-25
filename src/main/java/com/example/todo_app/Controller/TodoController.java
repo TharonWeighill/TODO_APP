@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/lists")
 public class TodoController {
@@ -12,6 +14,10 @@ public class TodoController {
     public TodoController( TodoService todoService ) {
         super();
         this.todoService = todoService;
+    }
+    @GetMapping
+    public List<TodoLists> getAllTodos(){
+     return todoService.getAllTodos();
     }
     @PostMapping
     public ResponseEntity<TodoLists> saveTodoLists(@RequestBody TodoLists todoLists){
