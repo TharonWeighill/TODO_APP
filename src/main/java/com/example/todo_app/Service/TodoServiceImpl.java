@@ -1,10 +1,8 @@
 package com.example.todo_app.Service;
-
 import com.example.todo_app.Exception.ResourceNotFound;
 import com.example.todo_app.Models.TodoLists;
 import com.example.todo_app.Repo.TodoRepo;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -36,9 +34,17 @@ public class TodoServiceImpl implements TodoService {
 
     @Override
     public TodoLists updateTodos(TodoLists todoLists, long id) {
-        TodoLists existingTodoLists = todoRepo.findById(id).orElseThrow( () -> new ResourceNotFound("Todo Not Found", id));
+        TodoLists existingTodoLists = todoRepo.findById(id).orElseThrow(()
+                -> new ResourceNotFound("Todo Not Found", id));
         existingTodoLists.setListName(todoLists.getlistBody());
         todoRepo.save(existingTodoLists);
         return existingTodoLists;
+    }
+
+    @Override
+    public void deleteTodos(long id) {
+        todoRepo.findById(id).orElseThrow(()
+                -> new ResourceNotFound("This Todo does not exist", id));
+        todoRepo.deleteById(id);
     }
 }
