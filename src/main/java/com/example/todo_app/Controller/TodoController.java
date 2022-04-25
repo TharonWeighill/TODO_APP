@@ -27,4 +27,8 @@ public class TodoController {
     public ResponseEntity<TodoLists> saveTodoLists(@RequestBody TodoLists todoLists){
         return new ResponseEntity<TodoLists>(todoService.savedTodos(todoLists), HttpStatus.CREATED);
     }
+    @PutMapping("{id}")
+    public ResponseEntity<TodoLists> updateTodos(@PathVariable("id") long id, @RequestBody TodoLists todoLists){
+        return new ResponseEntity<TodoLists>(todoService.updateTodos(todoLists, id), HttpStatus.OK);
+}
 }

@@ -33,4 +33,12 @@ public class TodoServiceImpl implements TodoService {
     public TodoLists savedTodos(TodoLists todoLists) {
         return todoRepo.save(todoLists);
     }
+
+    @Override
+    public TodoLists updateTodos(TodoLists todoLists, long id) {
+        TodoLists existingTodoLists = todoRepo.findById(id).orElseThrow( () -> new ResourceNotFound("Todo Not Found", id));
+        existingTodoLists.setListName(todoLists.getlistBody());
+        todoRepo.save(existingTodoLists);
+        return existingTodoLists;
+    }
 }

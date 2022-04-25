@@ -10,4 +10,5 @@ public interface TodoService {
     List<TodoLists> getAllTodos();
     TodoLists getTodoById(Long id);
     TodoLists savedTodos(TodoLists todoLists);
+    TodoLists updateTodos(TodoLists todoLists, long id);
 }
