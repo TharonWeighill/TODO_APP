@@ -23,7 +23,7 @@ public class TodoServiceImpl implements TodoService {
         if(todoLists.isPresent()) {
             return todoLists.get();
         }else {
-            throw new ResourceNotFound("Todo Not Found", id);
+            throw new ResourceNotFound("Todo Not Found","id", id);
         }
     }
 
@@ -35,7 +35,7 @@ public class TodoServiceImpl implements TodoService {
     @Override
     public TodoLists updateTodos(TodoLists todoLists, long id) {
         TodoLists existingTodoLists = todoRepo.findById(id).orElseThrow(()
-                -> new ResourceNotFound("Todo Not Found", id));
+                -> new ResourceNotFound("Todo Not Found","id", id));
         existingTodoLists.setListName(todoLists.getlistBody());
         todoRepo.save(existingTodoLists);
         return existingTodoLists;
@@ -44,7 +44,7 @@ public class TodoServiceImpl implements TodoService {
     @Override
     public void deleteTodos(long id) {
         todoRepo.findById(id).orElseThrow(()
-                -> new ResourceNotFound("This Todo does not exist", id));
+                -> new ResourceNotFound("This Todo does not exist","id", id));
         todoRepo.deleteById(id);
     }
 }
