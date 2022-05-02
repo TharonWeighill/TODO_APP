@@ -21,22 +21,17 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>2.6.7</version>
-
         </dependency>
-
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>2.6.7</version>
-
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-test</artifactId>-->
+<!--            <version>2.6.7</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
             <version>2.6.7</version>
-
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -45,31 +40,9 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.9.1</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.fusionauth</groupId>
-            <artifactId>fusionauth-java-client</artifactId>
-            <version>1.36.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.mercateo.spring</groupId>
-            <artifactId>spring-security-jwt</artifactId>
-            <version>2.1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>io.fusionauth</groupId>
-            <artifactId>fusionauth-jwt</artifactId>
-            <version>5.1.2</version>
-            <scope>compile</scope>
+            <version>2.6.7</version>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
