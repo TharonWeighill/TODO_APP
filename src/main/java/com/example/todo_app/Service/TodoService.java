@@ -9,5 +9,6 @@ public interface TodoService {
     TodoLists getTodoById(Long id);
     TodoLists savedTodos(TodoLists todoLists);
     TodoLists updateTodos(TodoLists todoLists, long id);
+    TodoLists findUserById();
     void deleteTodos(long id);
 }

@@ -42,6 +42,11 @@ public class TodoServiceImpl implements TodoService {
     }
 
     @Override
+    public TodoLists findUserById() {
+        return null;
+    }
+
+    @Override
     public void deleteTodos(long id) {
         todoRepo.findById(id).orElseThrow(()
                 -> new ResourceNotFound("This Todo does not exist","id", id));
