@@ -9,7 +9,6 @@ import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.security.oauth2.common.AuthenticationScheme;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 import static java.util.Arrays.asList;
-
 @Configuration
 @EnableOAuth2Client
 public class FusionAuthOpenIdConnectConfig {
