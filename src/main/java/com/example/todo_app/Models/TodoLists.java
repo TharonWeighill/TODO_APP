@@ -9,18 +9,7 @@ public class TodoLists {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column
-    private String user;
-    @Column
     private String listName;
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user;
-    }
-
     @Column
     private String listBody;
 
