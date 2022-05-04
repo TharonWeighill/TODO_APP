@@ -1,5 +1,8 @@
 package com.example.todo_app.Controller;
+import com.inversoft.error.Errors;
+import com.inversoft.rest.ClientResponse;
 import io.fusionauth.client.FusionAuthClient;
+import io.fusionauth.domain.api.UserResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,9 +32,9 @@ public class FusionAuthController {
     }
         @GetMapping()
         @CrossOrigin
-        public ResponseEntity<Void> getAuthCode (@RequestParam("code") String authCode){
-        client.exchangeOAuthCodeForAccessToken(authCode, clientId, clientSecret, "http://localhost:9900/oauth-redirect");
+        public ClientResponse<UserResponse, Errors> getAuthCode (@RequestParam("code") String authCode){
+        client.exchangeOAuthCodeForAccessToken(authCode, clientId, clientSecret, "http://localhost:9011/oauth2/token");
             System.out.println(authCode);
-            return new ResponseEntity<Void>(HttpStatus.OK);
+           return client.retrieveUserUsingJWT(authCode);
         }
 }
