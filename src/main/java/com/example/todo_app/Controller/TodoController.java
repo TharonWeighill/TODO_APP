@@ -3,7 +3,7 @@ import com.example.todo_app.Models.TodoLists;
 import com.example.todo_app.Service.TodoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping ("/api/lists")
-@PreAuthorize ("hasAuthority('user') or hasAuthority('admin" + "')")
+
 public class TodoController {
     private TodoService todoService;
     public TodoController( TodoService todoService ) {
