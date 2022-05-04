@@ -45,6 +45,10 @@
             <artifactId>fusionauth-java-client</artifactId>
             <version>1.36.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
 
     </dependencies>
     <build>

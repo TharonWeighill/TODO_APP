@@ -1,24 +1,24 @@
 package com.example.todo_app.Controller;
-import com.inversoft.error.Errors;
-import com.inversoft.rest.ClientResponse;
-import io.fusionauth.client.FusionAuthClient;
-import io.fusionauth.domain.api.UserResponse;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.io.IOException;;
+import java.io.OutputStream;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+import java.net.HttpURLConnection;
 @RestController
 @CrossOrigin
 @RequestMapping ("/oauth-redirect")
 public class FusionAuthController {
-
     private String apiKey = "9b26f51e-6b0e-4d33-93a0-619d45fa3923";
     private String clientId = "a7f398aa-8337-4112-94a0-f99bc29a8136";
     private String clientSecret = "nTUHnlCcKvVnVhofP47ROBaWulWbK84N-l-xc3PzC2g";
     private String  fusionAuthURL = "http://localhost:9011";
-    FusionAuthClient client = new FusionAuthClient(apiKey, "http://localhost:9011");
+    private String uri = "http://localhost:9011/oauth2/token";
 
 
-    public FusionAuthController() {
+
+    public FusionAuthController() throws IOException {
 
         //1) \query param
         //2) \GET auth code
@@ -32,9 +32,27 @@ public class FusionAuthController {
     }
         @GetMapping()
         @CrossOrigin
-        public ClientResponse<UserResponse, Errors> getAuthCode (@RequestParam("code") String authCode){
-        client.exchangeOAuthCodeForAccessToken(authCode, clientId, clientSecret, "http://localhost:9011/oauth2/token");
-            System.out.println(authCode);
-           return client.retrieveUserUsingJWT(authCode);
+        public String exchangeOAuthCodeForAccessToken (@RequestParam("code") String authCode) throws IOException {
+            URL url = new URL("http://localhost:9011/oauth2/token");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            conn.setRequestProperty("Accept", "application/x-www-form-urlencoded");
+            conn.setDoOutput(true);
+            Map<String, String> params = new HashMap();
+            params.put("code", authCode);
+            params.put("clientSecret", clientSecret);
+            params.put("clientId", clientId);
+            params.put("grant_type", "authorization_code");
+            params.put("redirect_uri", uri);
+            String inputString = String.valueOf(params);
+            System.out.println(params);
+            try (OutputStream os = conn.getOutputStream()) {
+                byte[] input = inputString.getBytes("utf-8");
+                os.write(input, 0, input.length);
+            }
+            System.out.println(inputString);
+            return inputString;
         }
 }
+ // return this.startAnonymous(AccessToken.class, OAuthError.class).uri("/oauth2/token").bodyHandler(new FormDataBodyHandler(parameters)).post().go();
